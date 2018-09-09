@@ -19,6 +19,7 @@ int main(int argc, char *argv[]){
     std::ostringstream oss;
 
     std::string line;
+    getline(arch, line);
     while(getline(arch, line)){
         std::istringstream iss(line);
 
@@ -28,10 +29,10 @@ int main(int argc, char *argv[]){
         getline(iss,line,',');
         string name = line;
 
-        getline(iss,line);
+        getline(iss,line,',');
         string strx = line;
 
-        getline(iss,line);
+        getline(iss,line,',');
         string stry = line;
 
         double x = std::stod(strx);
@@ -41,7 +42,7 @@ int main(int argc, char *argv[]){
     }
 
     arch.close();
-    std::ofstream file("data.csv");
+    std::ofstream file("data2.csv");
 
     file << oss.str();
     file.close();
