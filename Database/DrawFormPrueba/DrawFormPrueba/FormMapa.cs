@@ -43,7 +43,7 @@ namespace DrawFormPrueba
             YW = 270 - Convert.ToInt32(jugador.getY());
 
             //agregar puntos
-            for (int i = 0; i < 2000; i++)
+            for (int i = 0; i < 500; i++)
             {
                 Puntos punto = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
                 puntos.Add(punto);
@@ -51,73 +51,6 @@ namespace DrawFormPrueba
 
         }
 
-       
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-            if (A == 1)            //if (pX + XW < 400)
-            {
-                XW = XW + 5;
-            }
-            if (D == 1) //if (pX > this.ClientSize.Width/2 - 400 - XW)
-            {
-                XW = XW - 5;
-            }
-
-            if (W == 1)//if (pY + YW <200)
-            {
-                YW = YW + 5;
-            }
-
-            if (S == 1) //if (pY> this.ClientSize.Height/2 - 200 - YW)
-            {
-                YW = YW - 5;
-            }
-
-
-            Graphics g = this.CreateGraphics();
-
-            BufferedGraphicsContext contexto = BufferedGraphicsManager.Current;
-            BufferedGraphics buffer = contexto.Allocate(g, this.ClientRectangle);
-            buffer.Graphics.ScaleTransform(scale, scale);
-            buffer.Graphics.TranslateTransform(XW, YW);
-            buffer.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-
-            buffer.Graphics.Clear(Color.Black);
-
-
-            buffer.Graphics.DrawRectangle(Pens.Blue, 1, 1, mapa.Width - 3, mapa.Height - 3);
-
-
-            foreach (Puntos c in puntos)
-            {
-                c.dibujarball(buffer.Graphics);
-            }
-
-            foreach (Puntos b in apuntadores)
-            {
-              //  b.dibujarball(buffer.Graphics);
-              //  b.moverball(pX, pY);
-                b.impedirSalida(mapa.Width, mapa.Height);
-
-                if (AutoMove == 1)
-                {
-                    XW = ClientSize.Width / (2 * scale) - Convert.ToInt32(b.getX() + 30);
-                    YW = ClientSize.Height / (2 * scale) - Convert.ToInt32(b.getY() + 30);
-                }
-            }
-
-
-
-            buffer.Render();
-
-
-
-
-
-        }
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {

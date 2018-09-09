@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+
+using System.Windows.Forms;
 namespace DrawFormPrueba
 {
 
@@ -21,7 +23,9 @@ namespace DrawFormPrueba
         int minitimer;
         String nombre;
         Rectangle r = new Rectangle();
-        
+
+
+        Font Font = new Font("Arial", 10);
         public Puntos(int pX, int pY, int R, int G, int B)
         {
             minitimer = 49;
@@ -31,7 +35,7 @@ namespace DrawFormPrueba
             y = pY;
             color = Color.Red;
             br = new SolidBrush(Color.FromArgb(255, R, G, B));
-         
+            nombre = "CIUDAD";
         }
 
         public int getMiniTimer()
@@ -96,6 +100,12 @@ namespace DrawFormPrueba
         {
             g.FillEllipse(br, Convert.ToInt32(x), Convert.ToInt32(y), 5, 5);
 
+            Font = new Font("Arial Black", 8);
+
+            Size textSize = TextRenderer.MeasureText(nombre, Font);
+
+
+            g.DrawString(nombre, Font, Brushes.White, Convert.ToInt32(x) + (30 - textSize.Width) / 2 + 3, Convert.ToInt32(y) + 10);
 
         }
 
