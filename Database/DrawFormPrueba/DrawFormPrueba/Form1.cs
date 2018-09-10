@@ -24,16 +24,17 @@ namespace DrawFormPrueba
         }
         void leerArchivo()
         {
-
+            
             string line = "";
             int maximo = 0;
             textBox1.Text = "";
-            using (StreamReader sr = new StreamReader(@"C:\Users\Acer\Desktop\Complejidad\TrabajoParcial\CC76TP20182\Database\data.csv"))
+            using (StreamReader sr = new StreamReader(@"C:\Users\Acer\Desktop\final2\CC76TP20182\Database\data2.csv"))
 
                 while (maximo < Convert.ToInt32(txtMaximo.Text))
                 {
                     line = sr.ReadLine();
                     maximo++;
+
                     textBox1.Text = textBox1.Text + line + "                   ";
 
                 }
@@ -44,6 +45,11 @@ namespace DrawFormPrueba
         {
             FormMapa frm = new FormMapa();
             frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            leerArchivo();
         }
     }
 }

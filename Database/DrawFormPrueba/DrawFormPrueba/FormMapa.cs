@@ -26,7 +26,7 @@ namespace DrawFormPrueba
         List<Puntos> apuntadores = new List<Puntos>();
         List<Puntos> puntos = new List<Puntos>();
 
-
+        List<String> nombres = new List<String>();
         public FormMapa()
         {
             InitializeComponent();
@@ -48,6 +48,27 @@ namespace DrawFormPrueba
                 Puntos punto = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
                 puntos.Add(punto);
             }
+            leerArchivoAlMap();
+        }
+        void leerArchivoAlMap()
+        {
+
+            string line = "";
+            int maximo = 0;
+            int aum = 0;
+           // textBox1.Text = "";
+            using (StreamReader sr = new StreamReader(@"C:\Users\Acer\Desktop\final2\CC76TP20182\Database\data2.csv"))
+
+                while (maximo < 499)
+                {
+                    line = sr.ReadLine();
+                    maximo++;
+
+                    aum++;
+                       puntos.ElementAt(aum).setNombre(line);
+                    
+
+                }
 
         }
 

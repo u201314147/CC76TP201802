@@ -109,7 +109,10 @@ namespace DrawFormPrueba
 
         }
 
-
+        public void setNombre(String pnombre)
+        {
+            nombre = pnombre;
+        }
         public double getX()
         {
             return x;
