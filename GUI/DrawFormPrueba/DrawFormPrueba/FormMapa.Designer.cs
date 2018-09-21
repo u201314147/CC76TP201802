@@ -56,6 +56,7 @@
             this.Name = "FormMapa";
             this.Text = "FormMapa";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMapa_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormMapa_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormMapa_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();

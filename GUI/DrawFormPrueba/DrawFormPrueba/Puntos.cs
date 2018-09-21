@@ -11,6 +11,7 @@ namespace DrawFormPrueba
 
     class Puntos
     {
+        int id = 0;
         float x = 0;
         float y = 0;
         Color color;
@@ -126,6 +127,13 @@ namespace DrawFormPrueba
         {
             return velocidad;
         }
-
+        public void setId(int pid)
+        {
+            id = pid;
+        }
+        public int getId()
+        {
+           return id;
+        }
     }
 }
