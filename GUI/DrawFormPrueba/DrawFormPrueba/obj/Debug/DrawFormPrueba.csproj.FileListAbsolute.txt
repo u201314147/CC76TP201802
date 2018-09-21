@@ -12,7 +12,6 @@ C:\Users\Acer\Desktop\Complejidad\TrabajoParcial\CC76TP20182\Database\DrawFormPr
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\bin\Debug\DrawFormPrueba.exe.config
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\bin\Debug\DrawFormPrueba.exe
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\bin\Debug\DrawFormPrueba.pdb
-C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.csprojAssemblyReference.cache
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.Form1.resources
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.FormMapa.resources
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.Properties.Resources.resources
@@ -20,3 +19,15 @@ C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.csp
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.csproj.CoreCompileInputs.cache
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.exe
 C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.pdb
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\bin\Debug\DrawFormPrueba.exe.config
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\bin\Debug\DrawFormPrueba.exe
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\bin\Debug\DrawFormPrueba.pdb
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.csprojAssemblyReference.cache
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.Form1.resources
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.FormMapa.resources
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.Properties.Resources.resources
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.csproj.GenerateResource.cache
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.csproj.CoreCompileInputs.cache
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.exe
+C:\Users\Acer\Desktop\xd\CC76TP20182\GUI\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.pdb
+C:\Users\Acer\Desktop\DrawFormPrueba\DrawFormPrueba\obj\Debug\DrawFormPrueba.csprojAssemblyReference.cache

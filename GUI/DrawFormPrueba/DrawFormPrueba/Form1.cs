@@ -28,7 +28,7 @@ namespace DrawFormPrueba
             string line = "";
             int maximo = 0;
             textBox1.Text = "";
-            using (StreamReader sr = new StreamReader(@"C:\Users\Acer\Desktop\final2\CC76TP20182\Database\data2.csv"))
+            using (StreamReader sr = new StreamReader("Data2.csv"))
 
                 while (maximo < Convert.ToInt32(txtMaximo.Text))
                 {

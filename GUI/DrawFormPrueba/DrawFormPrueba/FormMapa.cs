@@ -13,14 +13,13 @@ namespace DrawFormPrueba
 {
     public partial class FormMapa : Form
     {
-        int tamanoApuntador = 0;
-        int pX;
-        int pY;
-        int A, S, D, W, Z, X = 0;
-        int XW = 235;
-        int YW = 175;
+        int aux2 = 0;
+        int A, S, D, W = 0;
+        float XW = 15.0f;
+        float YW = 15.0f;
         int AutoMove = 0;
-        int scale = 1;
+        float scale = 1.0f;
+        int lenght = 72000;
         Random r = new Random();
         Rectangle mapa = new Rectangle();
         List<Puntos> apuntadores = new List<Puntos>();
@@ -39,11 +38,10 @@ namespace DrawFormPrueba
 
             Puntos jugador = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
             apuntadores.Add(jugador);
-            XW = 375 - Convert.ToInt32(jugador.getX());
-            YW = 270 - Convert.ToInt32(jugador.getY());
+
 
             //agregar puntos
-            for (int i = 0; i < 500; i++)
+            for (int i = 0; i < lenght; i++)
             {
                 Puntos punto = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
                 puntos.Add(punto);
@@ -54,20 +52,29 @@ namespace DrawFormPrueba
         {
 
             string line = "";
+            Char delimiter = ',';
             int maximo = 0;
             int aum = 0;
-           // textBox1.Text = "";
-            using (StreamReader sr = new StreamReader(@"C:\Users\Acer\Desktop\final2\CC76TP20182\Database\data2.csv"))
+            string[] datos;
+            // textBox1.Text = "";
+            using (StreamReader sr = new StreamReader(@"data.csv"))
 
-                while (maximo < 499)
+                while (maximo < lenght - 1)
                 {
                     line = sr.ReadLine();
-                    maximo++;
+                    if (aum>0)
+                    {
+                    line = sr.ReadLine();
+                        datos = line.Split(delimiter);
+                        maximo++;
 
+                        
+                        puntos.ElementAt(aum).setNombre(datos[1]);
+                        puntos.ElementAt(aum).setX(float.Parse(datos[2]) * 100);
+                        puntos.ElementAt(aum).setY(float.Parse(datos[3]) * -100);
+
+                     }
                     aum++;
-                       puntos.ElementAt(aum).setNombre(line);
-                    
-
                 }
 
         }
@@ -75,6 +82,7 @@ namespace DrawFormPrueba
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
+           
             try
             {
 
@@ -82,21 +90,21 @@ namespace DrawFormPrueba
 
                 if (A == 1)            //if (pX + XW < 400)
                 {
-                    XW = XW + 5;
+                    XW = XW + 10*5 / scale;
                 }
                 if (D == 1) //if (pX > this.ClientSize.Width/2 - 400 - XW)
                 {
-                    XW = XW - 5;
+                    XW = XW - 10*5 / scale;
                 }
 
                 if (W == 1)//if (pY + YW <200)
                 {
-                    YW = YW + 5;
+                    YW = YW + 10*5 / scale;
                 }
 
                 if (S == 1) //if (pY> this.ClientSize.Height/2 - 200 - YW)
                 {
-                    YW = YW - 5;
+                    YW = YW - 10*5 / scale;
                 }
 
 
@@ -117,28 +125,17 @@ namespace DrawFormPrueba
 
                 foreach (Puntos c in puntos)
                 {
-                    c.dibujarball(buffer.Graphics);
+                    c.dibujarball(buffer.Graphics, XW*-1, YW*-1, scale, ClientSize.Width, ClientSize.Height);
                 }
 
-                foreach (Puntos b in apuntadores)
-                {
-                    //  b.dibujarball(buffer.Graphics);
-                    //  b.moverball(pX, pY);
-                    b.impedirSalida(mapa.Width, mapa.Height);
-
-                    if (AutoMove == 1)
-                    {
-                        XW = ClientSize.Width / (2 * scale) - Convert.ToInt32(b.getX() + 30);
-                        YW = ClientSize.Height / (2 * scale) - Convert.ToInt32(b.getY() + 30);
-                    }
-                }
+              
 
 
-
+              
                 buffer.Render();
 
 
-            }catch(Exception g)
+            } catch (Exception g)
             {
 
             }
@@ -165,24 +162,27 @@ namespace DrawFormPrueba
             }
             if (e.KeyCode == Keys.Add)
             {
-                scale = scale + 1;
+                scale = scale + 0.1f;
 
             }
             if (e.KeyCode == Keys.Subtract)
             {
-                if (scale != 1)
-                    scale = scale - 1;
+            
+                    scale = scale - 0.1f;
             }
             if (e.KeyCode == Keys.Space)
             {
-
-                if (AutoMove == 1)
-                    AutoMove = 0;
+                if (aux2 < lenght)
+                {
+                    XW = puntos.ElementAt(aux2).getX() * -1 + ClientSize.Width / scale - (scale) / 2;
+                    YW = puntos.ElementAt(aux2).getY() * -1 + ClientSize.Height / scale - (scale) / 2;
+                    aux2++;
+                         }
                 else
-                    AutoMove = 1;
-
+                    aux2 = 0;
             }
 
+            label1.Text = "XW: " + ((XW * -1)/100).ToString() + "  YW:" + ((YW) / 100).ToString() + "  Escala: " + scale;
 
 
 
@@ -208,24 +208,10 @@ namespace DrawFormPrueba
             }
 
 
-        }
-
-        private void FormMapa_MouseMove(object sender, MouseEventArgs e)
-        {
-            pX = (e.X - tamanoApuntador * scale / 2) / scale - XW;
-            pY = (e.Y - tamanoApuntador * scale / 2) / scale - YW;
-
+            label1.Text = "XW: " + ((XW * -1) / 100).ToString() + "  YW:" + ((YW) / 100).ToString() + "  Escala: " + scale;
 
         }
 
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {
-            pX = (e.X - tamanoApuntador * scale / 2) / scale - XW;
-            pY = (e.Y - tamanoApuntador * scale / 2) / scale - YW;
-
-
-
-        }
 
         private void btnAbrirMapa_Click(object sender, EventArgs e)
         {
@@ -233,48 +219,6 @@ namespace DrawFormPrueba
             frm.Show();
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.A)
-            {
-                A = 1;
-            }
-            if (e.KeyCode == Keys.W)
-            {
-                W = 1;
-            }
-            if (e.KeyCode == Keys.S)
-            {
-                S = 1;
-            }
-            if (e.KeyCode == Keys.D)
-            {
-                D = 1;
-            }
-            if (e.KeyCode == Keys.Add)
-            {
-                scale = scale + 1;
-
-            }
-            if (e.KeyCode == Keys.Subtract)
-            {
-                if (scale != 1)
-                    scale = scale - 1;
-            }
-            if (e.KeyCode == Keys.Space)
-            {
-
-                if (AutoMove == 1)
-                    AutoMove = 0;
-                else
-                    AutoMove = 1;
-
-            }
-
-
-
-        }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {

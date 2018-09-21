@@ -11,8 +11,8 @@ namespace DrawFormPrueba
 
     class Puntos
     {
-        double x = 0;
-        double y = 0;
+        float x = 0;
+        float y = 0;
         Color color;
         SolidBrush br;
         double velocidad = 10.00;
@@ -35,7 +35,7 @@ namespace DrawFormPrueba
             y = pY;
             color = Color.Red;
             br = new SolidBrush(Color.FromArgb(255, R, G, B));
-            nombre = "CIUDAD";
+            nombre = "";
         }
 
         public int getMiniTimer()
@@ -65,59 +65,58 @@ namespace DrawFormPrueba
             r.Y = Convert.ToInt32(y);
             return r;
         }
-        public void moverball(int pX, int pY)
+       
+        public void dibujarball(Graphics g, float XW, float YW, float scale, int width, int height)
         {
-            double mY = Convert.ToDouble(pY) - Convert.ToDouble(y);
-            double mX = Convert.ToDouble(pX) - Convert.ToDouble(x);
-            m = mY / mX;
-
-            angulo = Math.Atan(m) * 180 / Math.PI;
-
-            if (y - pY > 0 && x - pX > 0)
-                angulo = Math.Atan(m) * 180 / Math.PI;
-
-            if (y - pY < 0 && x - pX > 0)
-                angulo = Math.Atan(m) * 180 / Math.PI + 180;
-
-            if (y - pY > 0 && x - pX > 0)
-                angulo = Math.Atan(m) * 180 / Math.PI + 180;
-
-            if (y - pY > 0 && x - pX < 0)
-                angulo = Math.Atan(m) * 180 / Math.PI + 360;
-
-            try
+           if (this.getX() > XW && this.getX() < XW+width/scale && this.getY() > YW && this.getY() < YW+height/ scale)
             {
 
 
+                if (scale <= 1)
+                    g.FillEllipse(br, x, y, 6f, 6f);
 
-                x = (x + velocidad * Math.Cos(angulo * Math.PI / 180.0));
-                y = (y + velocidad * Math.Sin(angulo * Math.PI / 180.0));
+                if (scale > 1 && scale < 5)
+                g.FillEllipse(br, x, y, 3f,3f);
 
-            }
-            catch (Exception) { }
-        }
-        public void dibujarball(Graphics g)
-        {
-            g.FillEllipse(br, Convert.ToInt32(x), Convert.ToInt32(y), 5, 5);
+                if (scale > 5 && scale <= 10)
+                   g.FillEllipse(br, x, y, 2f, 2f);
 
-            Font = new Font("Arial Black", 8);
+                if (scale > 10 && scale < 20)
+                    g.FillEllipse(br, x, y, 1f, 1f);
+                if (scale > 20 && scale < 50)
+                    g.FillEllipse(br, x, y, 0.5f, 0.5f);
+                if (scale > 50 )
+                    g.FillEllipse(br, x, y, 0.3f, 0.3f);
 
-            Size textSize = TextRenderer.MeasureText(nombre, Font);
 
+                if (scale>10)
+                {
+                    Font = new Font("Arial Black", 0.2f);
 
-            g.DrawString(nombre, Font, Brushes.White, Convert.ToInt32(x) + (30 - textSize.Width) / 2 + 3, Convert.ToInt32(y) + 10);
+                    Size textSize = TextRenderer.MeasureText(nombre, Font);
 
+                    g.DrawString(nombre, Font, Brushes.White, x, y + 0.3f);
+                    }
+           }
         }
 
         public void setNombre(String pnombre)
         {
             nombre = pnombre;
         }
-        public double getX()
+        public void setX(float pX)
+        {
+            x = pX;
+        }
+        public void setY(float pY)
+        {
+             y = pY;
+        }
+        public float getX()
         {
             return x;
         }
-        public double getY()
+        public float getY()
         {
             return y;
         }
