@@ -27,3 +27,31 @@
 	<fstream>
 	"CityMap.h"
 
+1537552413 source:c:\users\dc\documents\git\cc76tp20182\createal\source\city.cpp
+	"City.h"
+	<math.h>
+
+1537553327 c:\users\dc\documents\git\cc76tp20182\createal\source\city.h
+	<string>
+	<vector>
+
+1537558021 source:c:\users\dc\documents\git\cc76tp20182\createal\source\main.cpp
+	<iostream>
+	<string>
+	<sstream>
+	<fstream>
+	"CityMap.h"
+
+1537556219 c:\users\dc\documents\git\cc76tp20182\createal\source\citymap.h
+	<string>
+	<vector>
+	<fstream>
+	"City.h"
+
+1537581870 source:c:\users\dc\documents\git\cc76tp20182\createal\source\citymap.cpp
+	"CityMap.h"
+	<sstream>
+	<iostream>
+	<iomanip>
+	<math.h>
+

@@ -50,7 +50,6 @@ void merge(vector<City> &vec, int l, int m, int r){
         k++;
     }
 
-
     while (j < R.size()){
         vec[k] = R[j];
         j++;
