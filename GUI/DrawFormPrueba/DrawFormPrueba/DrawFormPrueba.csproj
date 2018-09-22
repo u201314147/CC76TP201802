@@ -57,6 +57,7 @@
     <Compile Include="FormMapa.Designer.cs">
       <DependentUpon>FormMapa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lineas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Puntos.cs" />

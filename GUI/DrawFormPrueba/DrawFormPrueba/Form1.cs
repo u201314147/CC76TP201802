@@ -28,7 +28,8 @@ namespace DrawFormPrueba
             string line = "";
             int maximo = 0;
             textBox1.Text = "";
-            using (StreamReader sr = new StreamReader("Data2.csv"))
+            try { 
+            using (StreamReader sr = new StreamReader("metadata.md"))
 
                 while (maximo < Convert.ToInt32(txtMaximo.Text))
                 {
@@ -38,7 +39,10 @@ namespace DrawFormPrueba
                     textBox1.Text = textBox1.Text + line + "                   ";
 
                 }
-
+               }catch(Exception e)
+            {
+                MessageBox.Show("No se pudo encontrar el archivo metadata.md");
+            }
         }
 
         private void btnAbrirMapa_Click(object sender, EventArgs e)
@@ -50,6 +54,31 @@ namespace DrawFormPrueba
         private void button1_Click(object sender, EventArgs e)
         {
             leerArchivo();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            string line = "";
+            int maximo = 0;
+            textBox1.Text = "";
+            try
+            {
+                using (StreamReader sr = new StreamReader("matrix.al"))
+
+                    while (maximo < Convert.ToInt32(txtMaximo.Text))
+                    {
+                        line = sr.ReadLine();
+                        maximo++;
+
+                        textBox1.Text = textBox1.Text + line + "                   ";
+
+                    }
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show("No se pudo encontrar el archivo matrix.al");
+            }
         }
     }
 }
