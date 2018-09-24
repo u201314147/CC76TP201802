@@ -80,7 +80,7 @@ void CityMap::Connect_cities_by_distance_orig(){
         for(int j = 1; j <= 4; ++j)
             map_cities[i].Connect_with_city(map_cities[i+j], i+j);
 
-        if(c % (number_cities/20) == 0){
+        if(c*100 % (number_cities) == 0){
             int processes = static_cast<double>(c)/number_cities*100;
             std::cout << std::setprecision(2);
             std::cout << "Procesado el: " << processes << "% de ciudades." << '\n';

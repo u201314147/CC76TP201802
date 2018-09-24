@@ -1,0 +1,4 @@
+﻿  PathFinder.cpp
+c:\users\dc\documents\git\cc76tp20182\findpath\findpath\findpath\pathfinder.cpp(70): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+c:\users\dc\documents\git\cc76tp20182\findpath\findpath\findpath\pathfinder.cpp(125): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+  FindPath.vcxproj -> C:\Users\DC\Documents\Git\CC76TP20182\FindPath\FindPath\x64\Debug\FindPath.exe
