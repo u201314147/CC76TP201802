@@ -3,11 +3,15 @@
 #include <iostream>
 #include <sstream>
 #include <math.h>
-#include <queue>
 
 using std::string;
 using std::ifstream;
 using std::istringstream;
+
+extern time_t start_time;
+extern time_t end_time;
+
+time_t end_time;
 
 PathFinder::PathFinder(){}
 PathFinder::~PathFinder(){}
@@ -18,6 +22,35 @@ void PathFinder::Load_adylst(string filename) {
 	file->open(filename);
 
 	Load_adylst(file);
+}
+
+void print_path(vector<path> p, bool final) {
+	std::cout << "Camino: " << std::endl;
+	for (vector<path>::size_type i = 0; i < p.size(); ++i) {
+		std::cout << p[i].parent;
+		if (i + 1 != p.size())
+			std::cout << " -> ";
+	}
+
+	std::cout << "\n\nDistancias: " << std::endl;
+
+	for (vector<path>::size_type i = 0; i < p.size(); ++i) {
+		std::cout << p[i].w;
+		if (i + 1 != p.size())
+			std::cout << " -> ";
+		else
+			std::cout << "\n\nDistancia Total: " << p[i].w;
+	}
+
+	if(final == false){
+		time_t actual_time;
+		time(&actual_time);
+
+		std::cout << "\n\nTiempo de ejecucion (hasta el momento): " << actual_time - start_time << "s";
+	}
+	else {
+		std::cout << "\n\nTiempo de ejecucion total: " << end_time - start_time << "s";;
+	}
 }
 
 double str_to_double(string str){
@@ -128,6 +161,19 @@ vector<path> PathFinder::Find_path(int s) {
 vector<path> PathFinder::Big_F_Search(int s, vector<path> p_path, vector<bool> visited, double actual_weight, int cities_left, int start_city, int total_cities) {
 	p_path.push_back(path(s, actual_weight));
 
+	if (_kbhit()){
+		char key = _getch();
+
+		//if (key == 's' || key == 'S'){
+			print_path(p_path);
+			int total = total_cities - cities_left + 1;
+			if (cities_left == 0)
+				total -= 1;
+			std::cout << "\n\nTotal de ciudades en el camino: " << total;
+			std::cout << std::endl << std::endl;
+		//}
+	}
+
 	vector<path> temp_path;
 	vector<path> temp_path_2(1, path(0,-1));
 
@@ -156,6 +202,10 @@ vector<path> PathFinder::Big_F_Search(int s, vector<path> p_path, vector<bool> v
 				temp_path_2 = temp_path;
 			}
 		}
+	}
+
+	if (cities_left == total_cities) {
+		time(&end_time);
 	}
 
 	return temp_path_2;

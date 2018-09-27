@@ -1,9 +1,9 @@
-﻿  City.cpp
-  main.cpp
-  PathFinder.cpp
-c:\users\dc\documents\git\cc76tp20182\findpath\findpath\findpath\pathfinder.cpp(70): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-c:\users\dc\documents\git\cc76tp20182\findpath\findpath\findpath\pathfinder.cpp(125): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+﻿  PathFinder.cpp
+c:\users\dc\documents\git\cc76tp20182\findpath\findpath\findpath\pathfinder.cpp(103): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+c:\users\dc\documents\git\cc76tp20182\findpath\findpath\findpath\pathfinder.cpp(158): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
   Generando código
-  All 593 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  5 of 596 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   FindPath.vcxproj -> C:\Users\DC\Documents\Git\CC76TP20182\FindPath\FindPath\x64\Release\FindPath.exe

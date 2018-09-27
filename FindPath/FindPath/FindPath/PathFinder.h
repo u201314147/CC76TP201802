@@ -4,6 +4,8 @@
 
 #include <string>
 #include <fstream>
+#include <conio.h>
+#include <ctime>
 
 using std::vector;
 using std::string;
@@ -32,3 +34,4 @@ public:
 };
 
 double str_to_double(string str);
+void print_path(vector<path> path, bool final = false);
