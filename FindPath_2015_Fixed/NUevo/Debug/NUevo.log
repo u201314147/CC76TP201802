@@ -1,0 +1,7 @@
+﻿  PathFinder.cpp
+c:\users\alumnos\documents\visual studio 2015\projects\nuevo\nuevo\pathfinder.cpp(96): warning C4018: '<=': signed/unsigned mismatch
+  main.cpp
+  City.cpp
+  Generating Code...
+  NUevo.vcxproj -> c:\users\alumnos\documents\visual studio 2015\Projects\NUevo\Debug\NUevo.exe
+  NUevo.vcxproj -> c:\users\alumnos\documents\visual studio 2015\Projects\NUevo\Debug\NUevo.pdb (Partial PDB)

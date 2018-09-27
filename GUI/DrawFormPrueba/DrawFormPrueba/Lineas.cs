@@ -11,10 +11,12 @@ namespace DrawFormPrueba
     class Lineas
     {
         int id, id1, id2, id3, id4 = 0;
-
+        int tipoalg;
         float x, y, x1, x2, x3, x4, y1, y2, y3, y4 = 0;
+        Pen pen = new Pen(Color.Black, 0.1f);
         public Lineas()
         {
+            tipoalg =-1;
             id = 0;
             id1 = 0;
             id2 = 0;
@@ -34,13 +36,25 @@ namespace DrawFormPrueba
 
        public void dibujar(Graphics g, float XW, float YW, float scale, int width, int height)
         {
-            if ((this.getX() > XW && this.getX() < XW + width / scale && this.getY() > YW && this.getY() < YW + height / scale) ||
-               (this.getX1() > XW && this.getX1() < XW + width / scale && this.getY1() > YW && this.getY1() < YW + height / scale))
-            {
-              //  if (scale > 5)
-               // { 
-                    Pen pen = new Pen(Color.Red, 0.1f);
+           
+                //  if (scale > 5)
+                // { 
+                
+                if (tipoalg == 0)
+                {
+                     pen = new Pen(Color.Red, 0.1f);
+                }
+                if (tipoalg==1)
+                { 
+                     pen = new Pen(Color.Blue, 0.1f);
+                  }
 
+                if (tipoalg == 2)
+                {
+                    pen = new Pen(Color.Green, 0.1f);
+                }
+                if(tipoalg >=0)
+                { 
                 if (x1 != 0 && y1 != 0)
                     g.DrawLine(pen, x, y, x1, y1);
 
@@ -52,9 +66,9 @@ namespace DrawFormPrueba
 
                 if (x4 != 0 && y4 != 0)
                     g.DrawLine(pen, x, y, x4, y4);
-
+                  }
                 //   }
-            }
+             
         }
 
 
@@ -93,5 +107,9 @@ namespace DrawFormPrueba
         public int getId2() { return id2; }
         public int getId3() { return id3; }
         public int getId4() { return id4; }
+
+        public void setColor(int ptipoalg) { tipoalg = ptipoalg; }
+
+
     }
 }
