@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace DrawFormPrueba
 {
     public partial class Form1 : Form
     {
-
+        string archivo = "";
         int maxlineas = 145225;
         int maxpuntos = 145225;
         int idciudad = 112029;
@@ -24,14 +25,14 @@ namespace DrawFormPrueba
 
 
         }
-        void leerArchivo()
+        void leerArchivo(String archivo)
         {
 
             string line = "";
             int maximo = 0;
             textBox1.Text = "";
             try {
-                using (StreamReader sr = new StreamReader("metadata.md"))
+                using (StreamReader sr = new StreamReader(archivo))
 
                     while (maximo < Convert.ToInt32(txtMaximo.Text))
                     {
@@ -43,7 +44,7 @@ namespace DrawFormPrueba
                     }
             } catch (Exception e)
             {
-                MessageBox.Show("No se pudo encontrar el archivo metadata.md");
+               // MessageBox.Show("No se pudo encontrar el archivo" + archivo);
             }
         }
 
@@ -62,18 +63,47 @@ namespace DrawFormPrueba
 
             }
         }
+       
         private void btnAbrirMapa_Click(object sender, EventArgs e)
         {
-
+            comprobarArchivo();
             obtenervalores();
 
-            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 112029, "Puerto Pardo");
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 112029, "Puerto Pardo", archivo);
             frm.Show();
         }
-         
+         private void comprobarArchivo()
+        {
+            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var directory = System.IO.Path.GetDirectoryName(path);
+
+
+            if (chkFile.Checked == true)
+            {
+                archivo = directory + "\\" + txtFindData.Text;
+            }
+            else
+            {
+                archivo = txtFindData.Text;
+            }
+            try
+            {
+                leerArchivo(archivo);
+            }
+            catch (Exception g)
+            {
+                MessageBox.Show("No se pudo encontrar el archivo " + archivo);
+                return;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            leerArchivo();
+
+            comprobarArchivo();
+
+           
+         
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -104,16 +134,45 @@ namespace DrawFormPrueba
         private void btnNombreBusqueda_Click(object sender, EventArgs e)
         {
             obtenervalores();
-            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 0, txtNombre.Text);
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 0, txtNombre.Text, archivo);
             frm.Show();
         }
 
         private void btnCiudadbusqueda_Click(object sender, EventArgs e)
         {
             obtenervalores();
-            FormMapa frm = new FormMapa(maxlineas, maxpuntos, idciudad, "");
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, idciudad, "", archivo);
             frm.Show();
 
+        }
+
+        private void btnCentrosEducativos_Click(object sender, EventArgs e)
+        {
+ 
+
+           
+        }
+
+        private void btnFindData_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fdlg = new OpenFileDialog();
+            fdlg.Title = "C# Corner Open File Dialog";
+            fdlg.InitialDirectory = @"c:\";
+            fdlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+            fdlg.FilterIndex = 2;
+            fdlg.RestoreDirectory = true;
+            if (fdlg.ShowDialog() == DialogResult.OK)
+            {
+                txtFindData.Text = fdlg.FileName;
+            }
+        }
+
+        private void chkFile_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (txtFindData.Enabled == false)
+                txtFindData.Enabled = true;
+            else
+                txtFindData.Enabled = false;
         }
     }
 }

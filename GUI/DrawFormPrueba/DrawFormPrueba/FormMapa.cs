@@ -35,7 +35,7 @@ namespace DrawFormPrueba
         //punto de inicio para el algoritmo de union aleatoria
         Puntos randomprev = new Puntos(0,0,0,0,0);
         int auxLineas2 = 0;
-        public FormMapa(int maximoLineas, int maximoPuntos,int puntoinicio, String ciudadinicio)
+        public FormMapa(int maximoLineas, int maximoPuntos,int puntoinicio, String ciudadinicio, String archivo)
         {
            
             idpuntoinicio = puntoinicio;
@@ -74,7 +74,7 @@ namespace DrawFormPrueba
                 lineas.Add(linea);
 
             }
-            leerArchivoAlMap();
+            leerArchivoAlMap(archivo);
            leerLineasAlMap();
 
             if(idpuntoinicio==0)
@@ -156,7 +156,7 @@ namespace DrawFormPrueba
 
         }
 
-        void leerArchivoAlMap()
+        void leerArchivoAlMap(String archivo)
         {
             
                 string line = "";
@@ -165,8 +165,9 @@ namespace DrawFormPrueba
                 int aum = 0;
                 string[] datos;
                 string[] datos2;
-
-            using (StreamReader sr = new StreamReader(@"metadata.md"))
+            try
+            { 
+            using (StreamReader sr = new StreamReader(archivo))
 
                     while (maximo < lenght - 1)
                     {
@@ -200,7 +201,13 @@ namespace DrawFormPrueba
 
 
                     }
-            
+
+            }catch(Exception e)
+            {
+
+            }
+
+
         }
 
         void randomDrawLineas()
