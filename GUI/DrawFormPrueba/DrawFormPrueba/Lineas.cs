@@ -10,7 +10,10 @@ namespace DrawFormPrueba
 {
     class Lineas
     {
+        int costo2 = 0;
         double costo = 0;
+        string ciudad0 = "";
+        string ciudad1 = "";
         int id, id1, id2, id3, id4 = 0;
         int tipoalg;
         float x, y, x1, x2, x3, x4, y1, y2, y3, y4 = 0;
@@ -80,7 +83,7 @@ namespace DrawFormPrueba
             {
 
                 Font Font = new Font("Arial Black", 0.15f);
-                int costo2 = Convert.ToInt32(costo * 100);
+                costo2 = Convert.ToInt32(costo * 100);
                 g.DrawString("S/." + costo2, Font, Brushes.DarkBlue, (x + x1) / 2, (y + y1) / 2);
                 g.DrawString("S/." + costo2, Font, Brushes.White, (x + x1 + 0.01f) / 2, (y + y1 + 0.01f) / 2);
 
@@ -124,7 +127,32 @@ namespace DrawFormPrueba
         public int getId2() { return id2; }
         public int getId3() { return id3; }
         public int getId4() { return id4; }
+        public int getTipoAlg()
+        {
+            return tipoalg;
+        }
+        public int getCosto2()
+        {
+            return costo2;
+        }
+        public void setCiudad0(string c)
+        {
+            ciudad0 = c;
 
+        }
+        public void setCiudad1(string c)
+        {
+            ciudad1 = c;
+
+        }
+        public string getCiudad0()
+        {
+            return ciudad0;
+        }
+        public string getCiudad1()
+        {
+            return ciudad1;
+        }
         public void setColor(int ptipoalg) { tipoalg = ptipoalg; }
         public void calcularCosto()
         {

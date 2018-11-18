@@ -366,6 +366,26 @@ namespace DrawFormPrueba
             //}
            
         }
+
+
+
+        void recorrerConBellmandFord()
+        {
+            BellmanFord bellman = new BellmanFord();
+
+            List<Lineas> grafolineas = new List<Lineas>();
+
+            foreach(Lineas l in lineas)
+            {
+                if(l.getTipoAlg()==3)
+                {
+                    grafolineas.Add(l);
+                }
+            }
+            bellman.CrearGrafo(grafolineas);
+            MessageBox.Show(bellman.getResults());
+
+        }
         void unirpuntosAlSeleccionar(Puntos p)
         {
             if (puntoprev != null)
@@ -378,8 +398,9 @@ namespace DrawFormPrueba
                 lineanew.setY1(p.getY());
                 lineanew.setColor(3);
                 lineanew.calcularCosto();
-
-                if(puntoprev.getX() == p.getX() && puntoprev.getY() == p.getY())
+                lineanew.setCiudad0(puntoprev.getNombre());
+                lineanew.setCiudad1(p.getNombre());
+                if (puntoprev.getX() == p.getX() && puntoprev.getY() == p.getY())
                 {
 
                 }
@@ -583,7 +604,10 @@ namespace DrawFormPrueba
                 unirPorRadio();
                 }
             }
-
+            if (e.KeyCode == Keys.B)
+            {
+                recorrerConBellmandFord();
+            }
             if (e.KeyCode == Keys.F)
             {
                 

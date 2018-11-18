@@ -173,7 +173,7 @@ namespace DrawFormPrueba
 
 
         }
-
+       
         private void btnFindData_Click(object sender, EventArgs e)
         {
             OpenFileDialog fdlg = new OpenFileDialog();
