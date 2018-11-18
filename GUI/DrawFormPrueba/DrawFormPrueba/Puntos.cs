@@ -36,8 +36,8 @@ namespace DrawFormPrueba
             enemY = 0;
             x = pX;
             y = pY;
-            color = Color.Red;
-            br = new SolidBrush(Color.FromArgb(255, R, G, B));
+            color = Color.FromArgb(255, R, G, B);
+            br = new SolidBrush(color);
             nombre = "";
         }
 
@@ -102,7 +102,16 @@ namespace DrawFormPrueba
                     }
            }
         }
-
+        public void setColorRed()
+        {
+            color = Color.Red;
+            br = new SolidBrush(color);
+        }
+        public void setColorBlue()
+        {
+            color = Color.Blue;
+            br = new SolidBrush(color);
+        }
         public void setNombre(String pnombre)
         {
             nombre = pnombre;

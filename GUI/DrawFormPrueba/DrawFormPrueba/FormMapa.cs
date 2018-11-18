@@ -16,7 +16,8 @@ namespace DrawFormPrueba
         int mini = 0;
         int aux2 = 0; int aux3 = 0;
         int A, S, D, W, ADD, SUB = 0;
-      
+
+        int aumP = 0;
         float XW = 15.0f;
         float YW = 15.0f;
         float scale = 1.0f;
@@ -34,16 +35,19 @@ namespace DrawFormPrueba
        String nombreciudadinicio = "Puerto Pardo";
         //punto de inicio para el algoritmo de union aleatoria
         Puntos randomprev = new Puntos(0,0,0,0,0);
+        String archivo = "";
+        String archivo2 = "";
         int auxLineas2 = 0;
-        public FormMapa(int maximoLineas, int maximoPuntos,int puntoinicio, String ciudadinicio, String archivo)
+        public FormMapa(int maximoLineas, int maximoPuntos, int puntoinicio, String ciudadinicio, String parchivo, String parchivo2)
         {
-           
+            archivo = parchivo;
+            archivo2 = parchivo2;
             idpuntoinicio = puntoinicio;
             nombreciudadinicio = ciudadinicio;
             lenght = maximoPuntos;
             lenghtlineas = maximoLineas;
-             XW = 7667.456f;
-             YW = -802.6277f;
+            XW = 7667.456f;
+            YW = -802.6277f;
 
 
             randomprev = new Puntos(0, 0, r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
@@ -58,23 +62,33 @@ namespace DrawFormPrueba
 
             Puntos jugador = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
             apuntadores.Add(jugador);
-           
+
             //agregar puntos
             for (int i = 0; i < lenght; i++)
             {
                 Puntos punto = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
+            //    punto.setColorBlue();
                 puntos.Add(punto);
             }
 
             //agregar lineas
             for (int i = 0; i < lenghtlineas; i++)
             {
-               
+
                 Lineas linea = new Lineas();
                 lineas.Add(linea);
 
             }
-            leerArchivoAlMap(archivo);
+           
+            if (archivo2 == "")
+            {
+                leerArchivoAlMap(archivo, 0);
+            }
+            else
+            {
+                leerArchivoAlMap(archivo, 1);
+                leerArchivoAlMap(archivo2, 2);
+            }
            leerLineasAlMap();
 
             if(idpuntoinicio==0)
@@ -123,12 +137,13 @@ namespace DrawFormPrueba
                 int maximo = 0;
                 int aum = 0;
                 string[] datos;
-              
 
 
 
 
 
+            try
+            {
                 using (StreamReader sr = new StreamReader(@"matrix.al"))
 
                     while (maximo < lenghtlineas - 1)
@@ -147,67 +162,116 @@ namespace DrawFormPrueba
                         lineas.ElementAt(aum).setId2(Convert.ToInt32(datos[4]));
                         lineas.ElementAt(aum).setId3(Convert.ToInt32(datos[6]));
                         lineas.ElementAt(aum).setId4(Convert.ToInt32(datos[8]));
-                          lineas.ElementAt(aum).setColor(-1);
-                    auxLineas = 0;
-                    aum++;
-                    }
-        
-
-
-        }
-
-        void leerArchivoAlMap(String archivo)
-        {
-            
-                string line = "";
-                Char delimiter = ';';
-                int maximo = 0;
-                int aum = 0;
-                string[] datos;
-                string[] datos2;
-            try
-            { 
-            using (StreamReader sr = new StreamReader(archivo))
-
-                    while (maximo < lenght - 1)
-                    {
-                    
-
-                    if(lenght< 72613)
-                    {   line = sr.ReadLine();
-                        datos = line.Split(delimiter);
-                        maximo++;
-
-                        puntos.ElementAt(aum).setId(Convert.ToInt32(datos[0]));
-                        puntos.ElementAt(aum).setNombre(datos[1]);
-                        puntos.ElementAt(aum).setX(float.Parse(datos[2]) * 100);
-                        puntos.ElementAt(aum).setY(float.Parse(datos[3]) * -100);
-
-                        aum++;}
-
-                    if (lenght > 72613)
-                    {
-                        line = sr.ReadLine();
-                        datos2 = line.Split(delimiter);
-                        maximo++;
-
-                        puntos.ElementAt(aum).setId(Convert.ToInt32(datos2[0]));
-                        puntos.ElementAt(aum).setNombre(datos2[1]);
-                        puntos.ElementAt(aum).setX(float.Parse(datos2[2]) * 100);
-                        puntos.ElementAt(aum).setY(float.Parse(datos2[3]) * -100);
-                       
+                        lineas.ElementAt(aum).setColor(-1);
+                        auxLineas = 0;
                         aum++;
                     }
-
-
-                    }
-
             }catch(Exception e)
             {
 
             }
 
 
+        }
+
+        void leerArchivoAlMap(String archivo, int num)
+        {
+            
+                string line = "";
+                Char delimiter = ';';
+                int maximo = 0;
+               
+                string[] datos;
+                string[] datos2;
+                string[] datos3;
+                string[] datos4;
+            try
+            {
+
+
+                using (StreamReader sr = new StreamReader(archivo))
+
+                    while (maximo < lenght - 1)
+                    {
+
+                        if (num == 1)
+                            puntos.ElementAt(aumP).setColorRed();
+                        if (num == 2)
+                            puntos.ElementAt(aumP).setColorBlue();
+
+                        if (lenght < 72613)
+                        { line = sr.ReadLine();
+                            datos = line.Split(delimiter);
+                            maximo++;
+
+                            puntos.ElementAt(aumP).setId(Convert.ToInt32(datos[0]));
+                            puntos.ElementAt(aumP).setNombre(datos[1]);
+                            puntos.ElementAt(aumP).setX(float.Parse(datos[2]) * 100);
+                            puntos.ElementAt(aumP).setY(float.Parse(datos[3]) * -100);
+
+
+
+                            aumP++; }
+
+                        if (lenght >= 72613 && lenght < 145226)
+                        {
+                            line = sr.ReadLine();
+                            datos2 = line.Split(delimiter);
+                            maximo++;
+
+                            puntos.ElementAt(aumP).setId(Convert.ToInt32(datos2[0]));
+                            puntos.ElementAt(aumP).setNombre(datos2[1]);
+                            puntos.ElementAt(aumP).setX(float.Parse(datos2[2]) * 100);
+                            puntos.ElementAt(aumP).setY(float.Parse(datos2[3]) * -100);
+
+
+
+
+                            aumP++;
+                        }
+                        if (lenght >= 145226 && lenght < 217839)
+                        {
+                            line = sr.ReadLine();
+                            datos3 = line.Split(delimiter);
+                            maximo++;
+
+                            puntos.ElementAt(aumP).setId(Convert.ToInt32(datos3[0]));
+                            puntos.ElementAt(aumP).setNombre(datos3[1]);
+                            puntos.ElementAt(aumP).setX(float.Parse(datos3[2]) * 100);
+                            puntos.ElementAt(aumP).setY(float.Parse(datos3[3]) * -100);
+
+
+
+
+                            aumP++;
+                        }
+                        if (lenght >= 217839)
+                        {
+                            line = sr.ReadLine();
+                            datos4 = line.Split(delimiter);
+                            maximo++;
+
+                            puntos.ElementAt(aumP).setId(Convert.ToInt32(datos4[0]));
+                            puntos.ElementAt(aumP).setNombre(datos4[1]);
+                            puntos.ElementAt(aumP).setX(float.Parse(datos4[2]) * 100);
+                            puntos.ElementAt(aumP).setY(float.Parse(datos4[3]) * -100);
+
+
+
+
+                            aumP++;
+                        }
+
+
+                    }
+
+
+
+
+            } catch (Exception e)
+            {
+               // MessageBox.Show("Archivo invalido");
+            }
         }
 
         void randomDrawLineas()
@@ -325,7 +389,7 @@ namespace DrawFormPrueba
         }
         private void FormMapa_KeyPress(object sender, KeyPressEventArgs e)
         {
-        
+          
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -421,9 +485,13 @@ namespace DrawFormPrueba
         {
             if (e.KeyCode == Keys.T)
             {
-
+                if(nombreciudadinicio == "" && idpuntoinicio == 0)
+                {
+                }
+                else
+                { 
                 unirPorRadio();
-
+                }
             }
 
             if (e.KeyCode == Keys.F)
@@ -510,7 +578,7 @@ namespace DrawFormPrueba
 
         private void FormMapa_KeyUp(object sender, KeyEventArgs e)
         {
-            
+          
             if (e.KeyCode == Keys.A)
             {
                 A = 0;

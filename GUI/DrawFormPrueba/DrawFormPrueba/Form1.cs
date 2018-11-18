@@ -14,10 +14,12 @@ namespace DrawFormPrueba
 {
     public partial class Form1 : Form
     {
+        string puntomapa = "";
         string archivo = "";
+        string archivo2 = "";
         int maxlineas = 145225;
         int maxpuntos = 145225;
-        int idciudad = 112029;
+        int idciudad = 0;
       
         public Form1()
         {
@@ -48,15 +50,30 @@ namespace DrawFormPrueba
             }
         }
 
-        void obtenervalores()
+        void obtenervalores(int num)
         {
             try
             {
+               
+                if (num == 0)
+                { 
                 maxlineas = Convert.ToInt32(txtMaxLineas.Text);
                 maxpuntos = Convert.ToInt32(txtMaxPuntos.Text);
+                puntomapa = txtNombre.Text;
                 idciudad = Convert.ToInt32(txtId.Text);
-             
-
+                    
+                }
+                if(num ==1)
+                {
+                    maxlineas = Convert.ToInt32(maxLineas2.Text);
+                    maxpuntos = Convert.ToInt32(maxPuntos2.Text);
+                    puntomapa = txtBuscarNombre2.Text;
+                    idciudad = Convert.ToInt32(txtBuscarId2.Text);
+                   
+                }
+               
+               
+              
             }
             catch (Exception f)
             {
@@ -67,9 +84,9 @@ namespace DrawFormPrueba
         private void btnAbrirMapa_Click(object sender, EventArgs e)
         {
             comprobarArchivo();
-            obtenervalores();
+            obtenervalores(0);
 
-            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 112029, "Puerto Pardo", archivo);
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 0, "", archivo, "");
             frm.Show();
         }
          private void comprobarArchivo()
@@ -78,13 +95,13 @@ namespace DrawFormPrueba
             var directory = System.IO.Path.GetDirectoryName(path);
 
 
-            if (chkFile.Checked == true)
+            if (chkFile.Checked == false)
             {
-                archivo = directory + "\\" + txtFindData.Text;
+                archivo = directory + "\\" + cmbFindData.Text;
             }
             else
             {
-                archivo = txtFindData.Text;
+                archivo = cmbFindData.Text;
             }
             try
             {
@@ -133,24 +150,28 @@ namespace DrawFormPrueba
 
         private void btnNombreBusqueda_Click(object sender, EventArgs e)
         {
-            obtenervalores();
-            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 0, txtNombre.Text, archivo);
+            obtenervalores(0);
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 0, puntomapa, archivo, "");
             frm.Show();
         }
 
         private void btnCiudadbusqueda_Click(object sender, EventArgs e)
         {
-            obtenervalores();
-            FormMapa frm = new FormMapa(maxlineas, maxpuntos, idciudad, "", archivo);
+            obtenervalores(0);
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, idciudad, "", archivo, "");
             frm.Show();
 
         }
 
         private void btnCentrosEducativos_Click(object sender, EventArgs e)
         {
- 
+            comprobarArchivo();
+            obtenervalores(1);
 
-           
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 0, "", archivo, "CentrosEscolares.csv");
+            frm.Show();
+
+
         }
 
         private void btnFindData_Click(object sender, EventArgs e)
@@ -163,16 +184,30 @@ namespace DrawFormPrueba
             fdlg.RestoreDirectory = true;
             if (fdlg.ShowDialog() == DialogResult.OK)
             {
-                txtFindData.Text = fdlg.FileName;
+                cmbFindData.Text = fdlg.FileName;
             }
         }
 
         private void chkFile_CheckStateChanged(object sender, EventArgs e)
         {
-            if (txtFindData.Enabled == false)
-                txtFindData.Enabled = true;
+            if (cmbFindData.Enabled == false)
+                cmbFindData.Enabled = true;
             else
-                txtFindData.Enabled = false;
+                cmbFindData.Enabled = false;
+        }
+
+        private void btnBuscarNombre2_Click(object sender, EventArgs e)
+        {
+            obtenervalores(1);
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, 0, puntomapa, "metadata.md", "CentrosEscolares.csv");
+            frm.Show();
+        }
+
+        private void btnBuscarId2_Click(object sender, EventArgs e)
+        {
+            obtenervalores(1);
+            FormMapa frm = new FormMapa(maxlineas, maxpuntos, idciudad, "", "metadata.md", "CentrosEscolares.csv");
+            frm.Show();
         }
     }
 }
