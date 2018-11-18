@@ -13,6 +13,8 @@ namespace DrawFormPrueba
 {
     public partial class FormMapa : Form
     {
+        float clickX =0;
+        float clickY =0;
         int mini = 0;
         int aux2 = 0; int aux3 = 0;
         int A, S, D, W, ADD, SUB = 0;
@@ -387,6 +389,20 @@ namespace DrawFormPrueba
             { }
             auxLineas++;
         }
+
+        private void FormMapa_MouseClick(object sender, MouseEventArgs e)
+        {
+            //Entro para capturar click del mouse en los puntos
+            clickX =(( ((e.X)/scale)*-1 ) + XW)*-1;
+            clickY = ((((e.Y)/scale)*-1) + YW)*-1;
+
+          /*  Puntos punto = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
+          punto.setX(clickX);
+           punto.setY(clickY);
+            puntos.Add(punto);*/
+
+        }
+
         private void FormMapa_KeyPress(object sender, KeyPressEventArgs e)
         {
           
@@ -569,8 +585,8 @@ namespace DrawFormPrueba
                     aux2 = 0;
             }
 
-            label1.Text = "XW: " + ((XW * -1)/100).ToString() + "  YW:" + ((YW) / 100).ToString() + "  Escala: " + scale;
-            label2.Text = "XWR:" + XW + " YW: " + YW;
+            label1.Text = "XW: " + ((XW * -1)/100).ToString() + "  YW:" + ((YW) / 100).ToString() + "  Escala: " + scale + " ClickX = " + clickX + " ClickY = " + clickY + "Xample: " + puntos.ElementAt(aux2).getX() + "Yample: " + puntos.ElementAt(aux2).getY();
+            label2.Text = "XWR:" + XW + " YWR: " + YW;
 
 
 
@@ -605,7 +621,7 @@ namespace DrawFormPrueba
                 SUB = 0;
             }
 
-            label1.Text = "XW: " + ((XW * -1) / 100).ToString() + "  YW:" + ((YW) / 100).ToString() + "  Escala: " + scale;
+            label1.Text = "XW: " + ((XW * -1) / 100).ToString() + "  YW:" + ((YW) / 100).ToString() + "  Escala: " + scale + " ClickX = " + clickX + " ClickY = " + clickY + "Xample: " + puntos.ElementAt(aux2).getX() + "Yample: " + puntos.ElementAt(aux2).getY(); ;
 
         }
 
