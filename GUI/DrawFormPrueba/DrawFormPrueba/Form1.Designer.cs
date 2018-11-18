@@ -82,6 +82,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -490,6 +492,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label30);
+            this.tabPage3.Controls.Add(this.label29);
             this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.label24);
@@ -638,6 +642,24 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Controles para el mapa:";
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(50, 298);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(139, 13);
+            this.label29.TabIndex = 14;
+            this.label29.Text = "Click Izq: Seleccionar punto";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(50, 314);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(154, 13);
+            this.label30.TabIndex = 15;
+            this.label30.Text = "Click Der: Deseleccionar punto";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -713,6 +735,8 @@
         private System.Windows.Forms.TextBox txtBuscarNombre2;
         private System.Windows.Forms.Button btnBuscarNombre2;
         private System.Windows.Forms.Button btnBuscarId2;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
     }
 }
 

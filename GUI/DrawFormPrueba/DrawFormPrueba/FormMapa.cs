@@ -393,13 +393,34 @@ namespace DrawFormPrueba
         private void FormMapa_MouseClick(object sender, MouseEventArgs e)
         {
             //Entro para capturar click del mouse en los puntos
-            clickX =(( ((e.X)/scale)*-1 ) + XW)*-1;
-            clickY = ((((e.Y)/scale)*-1) + YW)*-1;
 
-          /*  Puntos punto = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
-          punto.setX(clickX);
-           punto.setY(clickY);
-            puntos.Add(punto);*/
+            if (e.Button == MouseButtons.Left)
+            {
+
+                clickX = ((((e.X) / scale) * -1) + XW) * -1;
+                clickY = ((((e.Y) / scale) * -1) + YW) * -1;
+
+                foreach (Puntos p in puntos)
+                {
+                    p.SetSeleccionado(clickX, clickY, scale);
+                }
+            }
+
+            if (e.Button == MouseButtons.Right)
+            {
+
+                clickX = ((((e.X) / scale) * -1) + XW) * -1;
+                clickY = ((((e.Y) / scale) * -1) + YW) * -1;
+
+                foreach (Puntos p in puntos)
+                {
+                    p.SetDeseleccionado(clickX, clickY, scale);
+                }
+            }
+            /*  Puntos punto = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
+            punto.setX(clickX);
+             punto.setY(clickY);
+              puntos.Add(punto);*/
 
         }
 
