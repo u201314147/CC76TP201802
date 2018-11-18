@@ -68,6 +68,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -82,8 +84,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -492,6 +494,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label32);
+            this.tabPage3.Controls.Add(this.label31);
             this.tabPage3.Controls.Add(this.label30);
             this.tabPage3.Controls.Add(this.label29);
             this.tabPage3.Controls.Add(this.label26);
@@ -515,6 +519,24 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Leeme";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(50, 341);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(242, 13);
+            this.label30.TabIndex = 15;
+            this.label30.Text = "Click Der: Unir con otro punto seleccionado antes";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(50, 325);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(139, 13);
+            this.label29.TabIndex = 14;
+            this.label29.Text = "Click Izq: Seleccionar punto";
             // 
             // label26
             // 
@@ -642,23 +664,23 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Controles para el mapa:";
             // 
-            // label29
+            // label31
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(50, 298);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(139, 13);
-            this.label29.TabIndex = 14;
-            this.label29.Text = "Click Izq: Seleccionar punto";
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(49, 358);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(180, 13);
+            this.label31.TabIndex = 16;
+            this.label31.Text = "Doble click izq: Deseleccionar punto";
             // 
-            // label30
+            // label32
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(50, 314);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(154, 13);
-            this.label30.TabIndex = 15;
-            this.label30.Text = "Click Der: Deseleccionar punto";
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(47, 309);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(69, 13);
+            this.label32.TabIndex = 17;
+            this.label32.Text = "Crear Grafos:";
             // 
             // Form1
             // 
@@ -737,6 +759,8 @@
         private System.Windows.Forms.Button btnBuscarId2;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
     }
 }
 

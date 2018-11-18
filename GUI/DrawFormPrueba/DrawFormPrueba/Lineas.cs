@@ -53,7 +53,12 @@ namespace DrawFormPrueba
                 {
                     pen = new Pen(Color.Green, 0.1f);
                 }
-                if(tipoalg >=0)
+                if (tipoalg == 3)//BELLMAND FORD LINEAS
+                 {
+                pen = new Pen(Color.LightBlue, 0.1f);
+                 }
+
+            if (tipoalg >=0)
                 { 
                 if (x1 != 0 && y1 != 0)
                     g.DrawLine(pen, x, y, x1, y1);
@@ -109,7 +114,7 @@ namespace DrawFormPrueba
         public int getId4() { return id4; }
 
         public void setColor(int ptipoalg) { tipoalg = ptipoalg; }
-
+       
 
     }
 }

@@ -13,6 +13,8 @@ namespace DrawFormPrueba
 {
     public partial class FormMapa : Form
     {
+        Puntos puntoNew;
+        Puntos puntoprev;
         float clickX =0;
         float clickY =0;
         int mini = 0;
@@ -364,7 +366,21 @@ namespace DrawFormPrueba
             //}
            
         }
+        void unirpuntosAlSeleccionar(Puntos p)
+        {
+            if (puntoprev != null)
+            {
+                Lineas lineanew = new Lineas();
 
+                lineanew.setX(puntoprev.getX());
+                lineanew.setY(puntoprev.getY());
+                lineanew.setX1(p.getX());
+                lineanew.setY1(p.getY());
+                lineanew.setColor(3);
+
+                lineas.Add(lineanew);
+            }
+        }
         void unirpuntosCercanos()
         {
             try
@@ -393,6 +409,7 @@ namespace DrawFormPrueba
         private void FormMapa_MouseClick(object sender, MouseEventArgs e)
         {
             //Entro para capturar click del mouse en los puntos
+          
 
             if (e.Button == MouseButtons.Left)
             {
@@ -402,7 +419,12 @@ namespace DrawFormPrueba
 
                 foreach (Puntos p in puntos)
                 {
-                    p.SetSeleccionado(clickX, clickY, scale);
+                    if(p.SetSeleccionado(clickX, clickY, scale))
+                    {
+                      
+
+                        puntoprev = p;
+                    }
                 }
             }
 
@@ -414,7 +436,15 @@ namespace DrawFormPrueba
 
                 foreach (Puntos p in puntos)
                 {
-                    p.SetDeseleccionado(clickX, clickY, scale);
+                    if (p.SetSeleccionado(clickX, clickY, scale))
+                    {
+                        if (puntoprev != null)
+                        {
+                            unirpuntosAlSeleccionar(p);
+                        }
+
+                        puntoprev = p;
+                    }
                 }
             }
             /*  Puntos punto = new Puntos(r.Next(0, mapa.Width + 1), r.Next(0, mapa.Height + 1), r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
@@ -422,6 +452,21 @@ namespace DrawFormPrueba
              punto.setY(clickY);
               puntos.Add(punto);*/
 
+        }
+
+        private void FormMapa_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+
+                clickX = ((((e.X) / scale) * -1) + XW) * -1;
+                clickY = ((((e.Y) / scale) * -1) + YW) * -1;
+
+                foreach (Puntos p in puntos)
+                {
+                    p.SetDeseleccionado(clickX, clickY, scale);
+                }
+            }
         }
 
         private void FormMapa_KeyPress(object sender, KeyPressEventArgs e)
