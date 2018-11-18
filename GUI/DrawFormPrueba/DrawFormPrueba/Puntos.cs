@@ -144,7 +144,7 @@ namespace DrawFormPrueba
 
                        //Font = new Font("Arial Black", 0.07f);
 
-                        g.DrawString("S/." + costo, Font, Brushes.DarkBlue, x - 0.3f, y - 0.3f/3);
+                       // g.DrawString("S/." + costo, Font, Brushes.DarkBlue, x - 0.3f, y - 0.3f/3);
 
                     }
                 }

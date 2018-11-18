@@ -377,8 +377,16 @@ namespace DrawFormPrueba
                 lineanew.setX1(p.getX());
                 lineanew.setY1(p.getY());
                 lineanew.setColor(3);
+                lineanew.calcularCosto();
 
+                if(puntoprev.getX() == p.getX() && puntoprev.getY() == p.getY())
+                {
+
+                }
+                else
+                { 
                 lineas.Add(lineanew);
+                }
             }
         }
         void unirpuntosCercanos()
