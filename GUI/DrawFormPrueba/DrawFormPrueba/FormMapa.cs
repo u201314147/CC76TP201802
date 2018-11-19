@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrawFormPrueba.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,8 @@ namespace DrawFormPrueba
         int mini = 0;
         int aux2 = 0; int aux3 = 0;
         int A, S, D, W, ADD, SUB = 0;
-
+        Image myImage = Resources.mapaperu;
+        Bitmap bmp = new Bitmap(Resources.mapaperu);
         int aumP = 0;
         float XW = 15.0f;
         float YW = 15.0f;
@@ -44,6 +46,7 @@ namespace DrawFormPrueba
         int auxLineas2 = 0;
         public FormMapa(int maximoLineas, int maximoPuntos, int puntoinicio, String ciudadinicio, String parchivo, String parchivo2)
         {
+            
             archivo = parchivo;
             archivo2 = parchivo2;
             idpuntoinicio = puntoinicio;
@@ -403,11 +406,11 @@ namespace DrawFormPrueba
             primsito.prim(grafolineas, grafolineas.ElementAt(0), ref tree);
 
 
-            string megaString = "Prim: Rutas a tomar para visitar ciudades con el costo minimo";
+            string megaString = "Prim: Rutas a tomar para visitar ciudades con el costo minimo" + "\n";
             foreach (var kv in tree)
             {
                
-                megaString = megaString + "Ciudad: " +  kv.Key.getCiudad0() + "Costo:" + kv.Value.getCosto2();
+                megaString = megaString + " Ciudad: " +  kv.Key.getCiudad0() + " Costo: " + kv.Key.getCosto2() + "\n";
             }
             MessageBox.Show(megaString);
 
@@ -601,12 +604,12 @@ namespace DrawFormPrueba
                 buffer.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
 
-                buffer.Graphics.Clear(Color.Black);
+                buffer.Graphics.Clear(Color.LightBlue);
 
 
                 buffer.Graphics.DrawRectangle(Pens.Blue, 1, 1, mapa.Width - 3, mapa.Height - 3);
 
-
+                buffer.Graphics.DrawImage(myImage, -8327, -75, myImage.Width -340, myImage.Height-425);
                 foreach (Puntos c in puntos)
                 {
                     c.dibujarball(buffer.Graphics, XW*-1, YW*-1, scale, ClientSize.Width, ClientSize.Height);

@@ -91,35 +91,43 @@ namespace DrawFormPrueba
 
                 if (scale > 10 && scale < 20)
                     g.FillEllipse(br, x+ 1f, y+ 1f, 1f, 1f);
-                if (scale > 20 && scale < 50)
-                    g.FillEllipse(br, x - 0.5f/2, y - 0.5f / 2, 0.5f, 0.5f);
-                if (scale > 50 )
-                    g.FillEllipse(br, x - 0.3f / 2, y - 0.3f / 2, 0.3f, 0.3f);
+                    if (scale > 20 && scale < 50)
+                    {
+                        g.FillEllipse(new SolidBrush(Color.Gray), x - 0.6f / 2, y - 0.6f / 2, 0.6f, 0.6f);
+
+                        g.FillEllipse(br, x - 0.5f / 2, y - 0.5f / 2, 0.5f, 0.5f);
+                    }
+                    if (scale > 50)
+                    {
+                        g.FillEllipse(new SolidBrush(Color.Gray), x - 0.4f / 2, y - 0.4f / 2, 0.4f, 0.4f);
+
+                        g.FillEllipse(br, x - 0.3f / 2, y - 0.3f / 2, 0.3f, 0.3f);
+                    }
                 }
                 
                 if(seleccionado ==1)
                 {
                     if (scale <= 1 && id % 16 == 0)
-                        g.FillEllipse(new SolidBrush(Color.White), x + 6f, y + 6f, 6f, 6f);
+                        g.FillEllipse(new SolidBrush(Color.DarkBlue), x + 6f, y + 6f, 6f, 6f);
      
 
                     if (scale > 1 && scale < 5 && id % 16 == 0)
-                        g.FillEllipse(new SolidBrush(Color.White), x + 3f, y + 3f, 3f, 3f);
+                        g.FillEllipse(new SolidBrush(Color.DarkBlue), x + 3f, y + 3f, 3f, 3f);
 
                     if (scale > 5 && scale <= 10)
-                        g.FillEllipse(new SolidBrush(Color.White), x + 2f, y + 2f, 2f, 2f);
+                        g.FillEllipse(new SolidBrush(Color.DarkBlue), x + 2f, y + 2f, 2f, 2f);
 
                     if (scale > 10 && scale < 20)
-                        g.FillEllipse(new SolidBrush(Color.White), x + 1f, y + 1f, 1f, 1f);
+                        g.FillEllipse(new SolidBrush(Color.DarkBlue), x + 1f, y + 1f, 1f, 1f);
                     if (scale > 20 && scale < 50)
                     {
                         g.FillEllipse(new SolidBrush(Color.Red), x - 1f / 2, y - 1f / 2, 1f, 1f);
-                        g.FillEllipse(new SolidBrush(Color.White), x - 0.5f / 2, y - 0.5f / 2, 0.5f, 0.5f);
+                        g.FillEllipse(new SolidBrush(Color.DarkBlue), x - 0.5f / 2, y - 0.5f / 2, 0.5f, 0.5f);
                     }
                     if (scale > 50)
                     {
                         g.FillEllipse(new SolidBrush(Color.Red), x - 0.6f / 2, y - 0.6f / 2, 0.6f, 0.6f);
-                        g.FillEllipse(new SolidBrush(Color.White), x - 0.3f / 2, y - 0.3f / 2, 0.3f, 0.3f);
+                        g.FillEllipse(new SolidBrush(Color.DarkBlue), x - 0.3f / 2, y - 0.3f / 2, 0.3f, 0.3f);
 
                     }
                 }
@@ -131,8 +139,8 @@ namespace DrawFormPrueba
                         Font = new Font("Arial Black", 0.1f);
 
                         Size textSize = TextRenderer.MeasureText(id.ToString() + " " + nombre, Font);
-
-                        g.DrawString(nombre, Font, Brushes.White, x - 0.3f, y - 0.3f / 2 + 0.3f);
+                      
+                        g.DrawString(nombre, Font, Brushes.Black, x - 0.3f, y - 0.3f / 2 + 0.3f);
                     }
                     if (seleccionado == 1)
                     {
@@ -140,7 +148,7 @@ namespace DrawFormPrueba
 
                         Size textSize = TextRenderer.MeasureText(id.ToString() + " " + nombre, Font);
 
-                        g.DrawString(nombre, Font, Brushes.White, x - 0.3f, y - 0.3f / 2 + 0.3f);
+                        g.DrawString(nombre, Font, Brushes.Black, x - 0.3f, y - 0.3f / 2 + 0.3f);
 
                        //Font = new Font("Arial Black", 0.07f);
 

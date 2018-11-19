@@ -17,16 +17,17 @@ namespace DrawFormPrueba
             public static void Print(int[,] distance, int verticesCount)
             {
            
-            string MegaString = "Floyd Warshall: Distancia mas corta entre cada par de vertices";
+            string MegaString = "Floyd Warshall: Distancia mas corta entre cada par de vertices" + "\n";
 
                 for (int i = 0; i < verticesCount; ++i)
                 {
                     for (int j = 0; j < verticesCount; ++j)
                     {
+
                     if (distance[i, j] == cst)
                     {
                         
-                        MegaString = MegaString + ("cst".PadLeft(7));
+                        MegaString = MegaString + ("inf".PadLeft(7)) ;
                        
                     }
                     else
@@ -34,7 +35,13 @@ namespace DrawFormPrueba
                         MegaString = MegaString + (distance[i, j].ToString().PadLeft(7));
                       
                     }
+
+                    if (j == verticesCount - 1)
+                    {
+
+                        MegaString = MegaString + "\n";
                     }
+                }
 
               
                 }

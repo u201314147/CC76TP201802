@@ -84,8 +84,8 @@ namespace DrawFormPrueba
 
                 Font Font = new Font("Arial Black", 0.15f);
                 costo2 = Convert.ToInt32(costo * 100);
-                g.DrawString("S/." + costo2, Font, Brushes.DarkBlue, (x + x1) / 2, (y + y1) / 2);
-                g.DrawString("S/." + costo2, Font, Brushes.White, (x + x1 + 0.01f) / 2, (y + y1 + 0.01f) / 2);
+                g.DrawString("S/." + costo2, Font, Brushes.White, (x + x1) / 2, (y + y1) / 2);
+                g.DrawString("S/." + costo2, Font, Brushes.DarkBlue, (x + x1 + 0.01f) / 2, (y + y1 + 0.01f) / 2);
 
             }
 

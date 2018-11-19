@@ -91,12 +91,12 @@ namespace DrawFormPrueba
                     if (!Iterate())
                         break;
                 }
-            string megaString = "Bellman Ford: La ruta menos costosa es :";
+            string megaString = "Bellman Ford: La ruta menos costosa es :" +"\n";
 
             foreach (var keyValue in memo)
                 {
                
-                   megaString = megaString + ($"{keyValue.Key}: {keyValue.Value}" + " ");
+                   megaString = megaString + ($"{keyValue.Key}: {keyValue.Value}" + " ") + "\n";
                 }
 
             foreach(Path p in graph)

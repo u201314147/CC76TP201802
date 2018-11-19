@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -68,6 +67,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -86,18 +88,19 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.pictureBox2);
             this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.label6);
@@ -112,15 +115,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Creditos";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DrawFormPrueba.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(48, 155);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(237, 236);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // label17
             // 
@@ -526,6 +520,33 @@
             this.tabPage3.Text = "Leeme";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(42, 191);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(128, 13);
+            this.label35.TabIndex = 20;
+            this.label35.Text = "P: Analizar grafo con Prim";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(41, 175);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(178, 13);
+            this.label34.TabIndex = 19;
+            this.label34.Text = "G: Analizar grafo con Floyd Warshall";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(42, 159);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(172, 13);
+            this.label33.TabIndex = 18;
+            this.label33.Text = "B: Analizar grafo con Bellman Ford ";
+            // 
             // label32
             // 
             this.label32.AutoSize = true;
@@ -688,32 +709,24 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Controles para el mapa:";
             // 
-            // label33
+            // pictureBox2
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(42, 159);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(172, 13);
-            this.label33.TabIndex = 18;
-            this.label33.Text = "B: Analizar grafo con Bellman Ford ";
+            this.pictureBox2.Image = global::DrawFormPrueba.Properties.Resources.mapaperu;
+            this.pictureBox2.Location = new System.Drawing.Point(6, 375);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(19, 19);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
-            // label34
+            // pictureBox1
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(41, 175);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(178, 13);
-            this.label34.TabIndex = 19;
-            this.label34.Text = "G: Analizar grafo con Floyd Warshall";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(42, 191);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(128, 13);
-            this.label35.TabIndex = 20;
-            this.label35.Text = "P: Analizar grafo con Prim";
+            this.pictureBox1.Image = global::DrawFormPrueba.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(48, 155);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(237, 236);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -725,12 +738,13 @@
             this.Text = "Algoritmo Viajero - Trabajo Final";
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -797,6 +811,7 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
