@@ -1,7 +1,4 @@
 # TRABAJO PARCIAL CC76TP201802
 
-contenido:
-1.
-2.
-3.
-4.
+Referencia rapida del repositorio
+https://drive.google.com/open?id=1LVcrzebo7DyppBNWcsv9JslcUPDa_hwu
