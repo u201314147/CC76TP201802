@@ -366,8 +366,52 @@ namespace DrawFormPrueba
             //}
            
         }
+        void recorrerConWarshall()
+        {
+            FloydWarshall floyd = new FloydWarshall();
+
+            List<Lineas> grafolineas = new List<Lineas>();
+
+            foreach (Lineas l in lineas)
+            {
+                if (l.getTipoAlg() == 3)
+                {
+                    grafolineas.Add(l);
+                }
+            }
+
+        
+            floyd.Mains(grafolineas);
+
+        }
+
+        void recorrerConPrim()
+        {
+            Prim primsito = new Prim();
+
+            List<Lineas> grafolineas = new List<Lineas>();
+
+            foreach (Lineas l in lineas)
+            {
+                if (l.getTipoAlg() == 3)
+                {
+                    grafolineas.Add(l);
+                }
+            }
+          
+             Dictionary<Lineas, Lineas> tree = new Dictionary<Lineas, Lineas> ();
+            primsito.prim(grafolineas, grafolineas.ElementAt(0), ref tree);
 
 
+            string megaString = "Prim: Rutas a tomar para visitar ciudades con el costo minimo";
+            foreach (var kv in tree)
+            {
+               
+                megaString = megaString + "Ciudad: " +  kv.Key.getCiudad0() + "Costo:" + kv.Value.getCosto2();
+            }
+            MessageBox.Show(megaString);
+
+        }
 
         void recorrerConBellmandFord()
         {
@@ -615,6 +659,10 @@ namespace DrawFormPrueba
                 YW = randomstart.getY() * -1 + (ClientSize.Height/2 - scale )/ scale ;
               
             }
+            if(e.KeyCode == Keys.G)
+            {
+                recorrerConWarshall();
+            }
             if (e.KeyCode == Keys.C)
             {
                 leerLineasAlMap();
@@ -628,6 +676,10 @@ namespace DrawFormPrueba
             {
                 randomDrawLineas();
 
+            }
+            if(e.KeyCode == Keys.P)
+            {
+                recorrerConPrim();
             }
             if (e.KeyCode == Keys.O)
             {

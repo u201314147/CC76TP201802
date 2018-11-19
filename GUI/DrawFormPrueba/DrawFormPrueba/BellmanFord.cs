@@ -91,7 +91,7 @@ namespace DrawFormPrueba
                     if (!Iterate())
                         break;
                 }
-            string megaString = "La ruta menos costosa es ";
+            string megaString = "Bellman Ford: La ruta menos costosa es :";
 
             foreach (var keyValue in memo)
                 {

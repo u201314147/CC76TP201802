@@ -25,7 +25,7 @@ namespace DrawFormPrueba
             id1 = 0;
             id2 = 0;
             id3 = 0;
-            id4 = 0;
+            id4 = -1;
             x = 0;
             y = 0;
             x1 = 0;
